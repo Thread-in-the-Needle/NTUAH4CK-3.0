@@ -3,7 +3,8 @@ import re
 from requests import get,post
 from random import randint
 url='http://localhost:1337'
-#url='http://ctfnhack.challs.ctflib.eu:13371/'
+
+# A bit hard solution, could be solved easier if the other users are not using the website
 
 items=loads(open('items.json').read())
 
