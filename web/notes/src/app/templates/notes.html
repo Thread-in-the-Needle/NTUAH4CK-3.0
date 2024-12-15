@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Notes</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/notes" class="button">Notes</a></li>
+                <li><a href="/logout" class="button">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="note-container">
+        <div class="button-container">
+            <a href="/notes/new" class="button">Add Note</a>
+        </div>
+            <h1>Your Notes</h1>
+            <ul class="note-list">
+                {% for id in note_ids %}
+                <li><a href="/notes/{{ id }}">Note: {{id}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+</body>
+</html>

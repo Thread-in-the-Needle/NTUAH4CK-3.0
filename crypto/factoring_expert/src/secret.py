@@ -1,0 +1,1 @@
+FLAG = "NH4CK{m0re_lik3_MT_3xp3r7}"

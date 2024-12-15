@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico">
+    <title>Search Automobiles</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/search">Search</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Search for Your Perfect Automobile</h1>
+        <p>Tell us your prefences and we will show you random matches and one matching all</p>
+        <p>Your search will be saved and displayed to other users.</p>
+        <form action="/search" method="POST">
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="">Any</option>
+                    <option value="car">Car</option>
+                    <option value="truck">Truck</option>
+                    <option value="bike">Bike</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="brand">Brand:</label>
+                <select id="brand" name="brand">
+                    <option value="">Any</option>
+                    <option value="foton">Foton</option>
+                    <option value="droid">Droid</option>
+                    <option value="morgan">Morgan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="color">Color:</label>
+                <select id="color" name="color">
+                    <option value="">Any</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="black">Black</option>
+                </select>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+        {% if error %}
+        <div class="error-message">
+            <h2>Request Error</h2>
+        </div>
+        {% endif %}
+        {% if search %}
+        <div class="search-results">
+            <h2>Your Search Results (Last image matches all)</h2>
+            <div class="results-list">
+                {% for item in search %}
+                <div class="result-item">
+                    <img src="../static/images/{{ item }}" alt="{{ item }}" style="width:100px; height:100px;">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% if prev_searches%}
+        <div class="prev_searches">
+            <h2>Other recent public searches:</h2>
+            <ul>
+                {% for search in prev_searches %}
+                    
+                    <p>Search performed at: {{ search[2] }}</p>
+                    <div class="results-list">
+                        {% for item in search[0] %}
+                        <div class="result-item">
+                            <img src="../static/images/{{ item }}" alt="{{ item }}" style="width:100px; height:100px;">
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>

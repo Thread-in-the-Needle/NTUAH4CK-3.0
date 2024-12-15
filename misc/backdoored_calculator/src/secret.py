@@ -1,0 +1,1 @@
+FLAG = "NH4CK{M0r3_c0mpl1c4t3d_th4n_th3_k0n4m1_c0d3}"

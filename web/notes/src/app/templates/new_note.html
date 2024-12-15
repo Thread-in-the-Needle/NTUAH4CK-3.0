@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Notes</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .popup {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #f44336;
+            color: white;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .popup.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;} 
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;} 
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/notes" class="button">Notes</a></li>
+                <li><a href="/logout" class="button">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="note-container">
+        <h2>New Note</h2>
+        <form id="noteForm" action="/notes/new" method="post">
+            <textarea name="note" id="noteContent" placeholder="Type your note here..." required></textarea>
+            <button type="submit" class="button">Make Note</button>
+        </form>
+    </div>
+    <div id="popupMessage" class="popup">Please refrain from using special characters.</div>
+    <script>
+        const blacklist = ['<', '>', '\\', '{', '}', '/'];
+        const noteForm = document.getElementById('noteForm');
+        const noteContent = document.getElementById('noteContent');
+        const popup = document.getElementById('popupMessage');
+
+        noteForm.addEventListener('submit', function(event) {
+            if (blacklist.some(char => noteContent.value.includes(char))) {
+                event.preventDefault();
+                popup.classList.add('show');
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

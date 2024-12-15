@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Notes</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/notes" class="button">Notes</a></li>
+                <li><a href="/logout" class="button">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="auth-container">
+        <h2>Register</h2>
+        <!-- Add this block to display flashed messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div id="flushed-message" style="color: red;">
+                {{ messages[0] }}
+            </div>
+            {% endif %}
+        {% endwith %}
+        <form action="/register" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="button">Register</button>
+        </form>
+        <form action="/login">
+            <button type="submit" class="button">Login Page</button>
+        </form>
+    </div>
+</body>
+</html>

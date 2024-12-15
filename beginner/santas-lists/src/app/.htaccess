@@ -1,0 +1,11 @@
+# Deny access to all files except index.php and the root directory
+<FilesMatch "^(?!index\.php$|^$).*$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Allow access to static resources like CSS, JS, images
+<FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>

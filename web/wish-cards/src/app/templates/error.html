@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico">
+    <title>Error</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cards">Cards</a></li>
+                <li><a href="/custom-cards">Custom Cards</a></li>
+        </nav>
+    </header>
+    <div class="error-container">
+        <h1>Oops!</h1>
+        {% if error %}
+        <p>{{ error }}</p>
+        {% else %}
+        <p>Something went wrong. Please try again later.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

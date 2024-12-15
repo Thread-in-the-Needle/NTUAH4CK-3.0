@@ -1,0 +1,3 @@
+# FLAG
+
+NH4CK{PPTXm45TeR}

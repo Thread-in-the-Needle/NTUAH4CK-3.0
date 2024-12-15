@@ -1,0 +1,1 @@
+FLAG = 'NH4CK{pwn700l5_m4573r!!!}'

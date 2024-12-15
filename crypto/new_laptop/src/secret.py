@@ -1,0 +1,1 @@
+FLAG = b"NH4CK{W1ls0n5_7h30r3m_4ny0n3?}"

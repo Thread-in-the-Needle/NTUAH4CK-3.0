@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Notes</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/notes" class="button">Notes</a></li>
+                <li><a href="/logout" class="button">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="note-container">
+        <h2>Your Note</h2>
+        <!-- Add this block to display flashed messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div id="flushed-message" style="color: red;">
+                {{ messages[0] }}
+            </div>
+            {% endif %}
+        {% endwith %}
+        <div class="note-content-box">
+            <p>{{ note.note | safe }}</p>
+        </div>
+        <a href="/notes/edit/{{ note.id }}" class="button">Edit Note</a>
+        <p class="description">Something Wrong with your note? Report it and a developer will take a look at it</p>
+        <form action="/notes/report_note/{{ note.id }}" method="POST" class="button-form"><button type="submit" class="button">Report Note</button></form>
+        <p class="description">Give LaTeX code and we'll convert to pdf for you</p>
+        <a href="/notes/export_latex/{{ note.id }}" class="button">Export Latex</a>
+        <form id="noteForm" action="/notes/delete/{{ note.id }}" method="POST">
+        <input type="submit" value="Delete Note" class="button">
+    </div>
+</body>
+</html>

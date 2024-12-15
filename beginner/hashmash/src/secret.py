@@ -1,0 +1,1 @@
+FLAG = b"NH4CK{1_H45h3d_50_h4Rd_4Nd_G07_50_F4r_bU7_1n_7He_3nD_0n3_bY73_w45_m0R3_7h4N_3n0uGh_70_l34k_my_l00ng_Fl4g!}"

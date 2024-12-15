@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Select a Picture</title>
+    <style>
+        .thumbnail {
+            width: 100px;  /* Set the width to a smaller size */
+            height: auto;  /* Maintain the aspect ratio */
+            margin: 10px;
+            cursor: pointer;
+        }
+        .thumbnail-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .thumbnail-container img {
+            border: 2px solid transparent;
+        }
+        .thumbnail-container img.selected {
+            border: 3px solid #007BFF; /* Use a more visually appealing blue color */
+            border-radius: 5px; /* Add rounded corners */
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Add a subtle shadow for depth */
+            transition: transform 0.2s ease-in-out; /* Smooth transition for scaling */
+            transform: scale(1.05); /* Slightly enlarge the selected image */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cards">Cards</a></li>
+                <li><a href="/custom-cards">Custom Cards</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Select a Picture for your wish card</h1>
+    <form id="imageForm" method="post" action="/cards">
+        <div class="thumbnail-container">
+            {% for card in cards %}
+                <img src="../static/images/{{ card }}" alt="Image" class="thumbnail" onclick="selectImage('{{ card }}')">
+            {% endfor %}
+        </div>
+        <input type="hidden" name="image" id="selectedImage">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function selectImage(imageUrl) {
+            // Deselect all images
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(img => img.classList.remove('selected'));
+
+            // Select the clicked image
+            const selectedImage = document.querySelector(`img[src='../static/images/${imageUrl}']`);
+            selectedImage.classList.add('selected');
+
+            // Set the hidden input value
+            document.getElementById('selectedImage').value = imageUrl;
+        }
+    </script>
+</body>
+</html>

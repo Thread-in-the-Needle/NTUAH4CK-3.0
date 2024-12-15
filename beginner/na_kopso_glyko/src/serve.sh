@@ -1,0 +1,1 @@
+socat -v TCP-LISTEN:1337,reuseaddr,fork EXEC:'python server.py,stderr'

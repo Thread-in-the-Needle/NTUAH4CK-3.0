@@ -1,0 +1,1 @@
+FLAG = b"NH4CK{Wh0_c0uld_h4v3_th0ugh7_7w0_byt35_w3r3_n07_3nough???}"

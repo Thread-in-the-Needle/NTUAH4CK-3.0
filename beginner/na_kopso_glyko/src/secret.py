@@ -1,0 +1,1 @@
+FLAG = 'NH4CK{ctf_horis_glyko?!?}'

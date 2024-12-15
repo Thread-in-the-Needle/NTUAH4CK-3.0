@@ -1,0 +1,4 @@
+requests
+imgkit
+flask
+gunicorn 

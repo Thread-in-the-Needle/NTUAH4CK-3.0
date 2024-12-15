@@ -1,0 +1,3 @@
+# FLAG
+
+NH4CK{I<3U-MUM}
