@@ -72,9 +72,9 @@ NTUAH4CK-3.0 Challenges and some writeups/solvers
 
 ### Web
 
-| Name                                  | Author(s)   | Difficulty |
-| ------------------                    | ----------- | ---------- |  
-| [careful-admin](./web/careful-admin/) | Souvlakia   | Medium     |
-| [wish-cards](./web/wish-cards/)       | Souvlakia   | Medium     |
-| [notes](./web/notes/)                 | Souvlakia   | Medium     |
+| Name                                  | Author(s)   |
+| ------------------                    | ----------- |  
+| [careful-admin](./web/careful-admin/) | Souvlakia   |
+| [wish-cards](./web/wish-cards/)       | Souvlakia   |
+| [notes](./web/notes/)                 | Souvlakia   |
 
