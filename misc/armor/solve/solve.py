@@ -6,8 +6,6 @@ print(dir(main)) # see whats going on
 
 print(main.first) # first part
 
-
-
 pdb.set_trace()
 pdb.run('main.second("test")')
 pdb.run('main.third("test")')

