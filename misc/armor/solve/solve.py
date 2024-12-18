@@ -4,8 +4,13 @@ import pdb
 print(dir(main)) # see whats going on
 
 
-print(main.first) # first part
+print(main.first)
+print(main.second.__code__.co_consts) 
+print(main.third.__code__.co_consts) 
+print(main.fourth.__code__.co_consts) 
+exit()
 
+# OR
 pdb.set_trace()
 pdb.run('main.second("test")')
 pdb.run('main.third("test")')
